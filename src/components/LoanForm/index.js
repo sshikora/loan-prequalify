@@ -10,7 +10,7 @@ const LoanForm = () => {
             Income = ${inputs.yearlyIncome}
             Score = ${inputs.creditScore}`)
   }
-  const {inputs, handleInputChange, handleSubmit} = useLoanForm(createLoan);
+  const {inputs, errors, handleInputChange, handleSubmit} = useLoanForm(createLoan);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -18,6 +18,7 @@ const LoanForm = () => {
         <div>
           <label>Auto Purchase Price</label>
           <input type='text' id='purchasePrice' name='purchasePrice' onChange={handleInputChange} value={inputs.purchasePrice}/>
+          <div className='input_errors'>{errors.purchasePrice}</div>
         </div>
 
         <div>
@@ -33,11 +34,13 @@ const LoanForm = () => {
         <div>
           <label>Estimated Yearly Income</label>
           <input type='text' id='yearlyIncome' name='yearlyIncome' onChange={handleInputChange} value={inputs.yearlyIncome}/>
+          <div className='input_errors'>{errors.yearlyIncome}</div>
         </div>
 
         <div>
           <label>Estimated Credit Score</label>
           <input type='text' id='creditScore' name='creditScore' onChange={handleInputChange} value={inputs.creditScore}/>
+          <div className='input_errors'>{errors.creditScore}</div>
         </div>
 
         <button type="submit">Submit</button>
