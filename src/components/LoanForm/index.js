@@ -1,37 +1,49 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+import React, { useState }  from 'react';
+import useLoanForm from '../../customHooks/loanHooks';
 
 const LoanForm = () => {
-  const { handleSubmit, register, errors } = useForm();
-  const onSubmit = values => {
-    console.log(values);
-  };
+  const createLoan = () => {
+    alert (`loan info
+            Purchase Price = ${inputs.purchasePrice}
+            Make = ${inputs.autoMake}
+            Model = ${inputs.autoModel}
+            Income = ${inputs.yearlyIncome}
+            Score = ${inputs.creditScore}`)
+  }
+  const {inputs, handleInputChange, handleSubmit} = useLoanForm(createLoan);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        name="email"
-        ref={register({
-          required: 'Required',
-          pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-            message: "invalid email address"
-          }
-        })}
-      />
-      {errors.email && errors.email.message}
+    <form onSubmit={handleSubmit}>
+      <div className="loan_form">
+        <div>
+          <label>Auto Purchase Price</label>
+          <input type='text' id='purchasePrice' name='purchasePrice' onChange={handleInputChange} value={inputs.purchasePrice}/>
+        </div>
 
-      <input
-        name="username"
-        ref={register({
-          validate: value => value !== "admin" || "Nice try!"
-        })}
-      />
-      {errors.username && errors.username.message}
+        <div>
+          <label>Auto Make</label>
+          <input type='text' id='autoMake' name='autoMake' onChange={handleInputChange} value={inputs.autoMake}/>
+        </div>
 
-      <button type="submit">Submit</button>
+        <div>
+          <label>Auto Model</label>
+          <input type='text' id='autoModel' name='autoModel' onChange={handleInputChange} value={inputs.autoModel}/>
+        </div>
+
+        <div>
+          <label>Estimated Yearly Income</label>
+          <input type='text' id='yearlyIncome' name='yearlyIncome' onChange={handleInputChange} value={inputs.yearlyIncome}/>
+        </div>
+
+        <div>
+          <label>Estimated Credit Score</label>
+          <input type='text' id='creditScore' name='creditScore' onChange={handleInputChange} value={inputs.creditScore}/>
+        </div>
+
+        <button type="submit">Submit</button>
+      </div>
     </form>
   );
-};
+}
 
 export default LoanForm;
