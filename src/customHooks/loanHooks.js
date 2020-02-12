@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 const useLoanForm = (callback) => {
   const [inputs, setInputs] = useState({});
   const [errors, setErrors] = useState({});
+  const [loanApplicationResults, setLoanApplicationResults] = useState({});
 
   const handleSubmit = (event) => {
     if (event) {

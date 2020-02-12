@@ -9,7 +9,7 @@ const SignupForm = () => {
             confirmPassword = ${inputs.confirmPassword}
             `)
     }
-    const { inputs, errors, handleInputChange, handleSubmit } = useLoanForm(createSignup);
+    const { inputs, errors, handleInputChange, handleSubmit } = useSignupForm(createSignup);
 
     return (
         <form onSubmit={handleSubmit}>
