@@ -1,5 +1,6 @@
 import React, { useState }  from 'react';
 import useLoanForm from '../../customHooks/loanHooks';
+import SignUp from '../SignUp'
 
 const LoanForm = () => {
   const createLoan = () => {
@@ -9,6 +10,7 @@ const LoanForm = () => {
             Model = ${inputs.autoModel}
             Income = ${inputs.yearlyIncome}
             Score = ${inputs.creditScore}`)
+    return
   }
   const {inputs, errors, handleInputChange, handleSubmit} = useLoanForm(createLoan);
 
